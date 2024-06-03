@@ -1,0 +1,12 @@
+export { default as Performance } from "./3.png";
+export { default as Support } from "./2.png";
+export { default as CostSaving } from "./1.png";
+export { default as SuperFast } from "./4.png";
+export { default as BarChart } from "./lost.png";
+export { default as CostChart } from "./barchart.png";
+export { default as CheckIn } from "./reservation.png";
+export { default as CheckOut } from "./logout.png";
+export { default as OverTimeStart } from "./startovertime.png";
+export { default as OverTimeEnd } from "./endovertime (2).png";
+export { default as PaySlip } from "./SalarySlip.png";
+export { default as Reimbursment } from "./Reimbursment.png";
