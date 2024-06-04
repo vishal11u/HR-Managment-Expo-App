@@ -29,7 +29,7 @@ const UserProfile = () => {
       <View className="p-5 mt-">
         <View className="h-32 w-32 bg-gray-100 rounded-full p-1.5 z-10 left-[40%] absolute">
           <Image
-            source={{ uri: 'https://img.freepik.com/free-photo/front-view-man-posing_23-2148364843.jpg?t=st=1717328137~exp=1717331737~hmac=6c62d659733e221d1e95715bd236563bea66bccef2e710377b3e11597780177b&w=360' }}
+            source={{ uri: 'https://img.freepik.com/free-photo/front-view-man-posing_23-2148364843.jpg?t=st=1717328137~exp=1717331737~hmac=6c62d659733e221d1e95715bd236563bea66bccef2e710377b3e11597780177b&w=360'}}
             className="h-full w-full object-cover rounded-full"
           />
         </View>

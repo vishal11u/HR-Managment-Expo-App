@@ -4,6 +4,7 @@ import { useForm, Controller } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigation } from '@react-navigation/native';
+import { Alert } from 'react-native';
 
 const schema = yup.object().shape({
   email: yup.string().required('Email or Username is required'),
@@ -18,8 +19,12 @@ const ManagerLogin = () => {
   const navigate = useNavigation();
 
   const onSubmit = data => {
-    console.log(data);
-    navigate.navigate("DrawerNavigator")
+    if (data.email !== "abc123" || data.password !== "123456") {
+      Alert.alert("Invalid Username and Password")
+    } else {
+      console.log(data);
+      navigate.navigate("DrawerNavigator")
+    }
   };
 
   const handleGoBack = () => {

@@ -1,4 +1,4 @@
-import { View, Text, Image, TouchableOpacity } from 'react-native'
+import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native'
 import React from 'react'
 import { useNavigation, DrawerActions } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
@@ -9,27 +9,27 @@ const StartingScreen = () => {
   const navigation = useNavigation();
 
   return (
-    <View className="pt-8 bg-gray-100 h-[120vh]">
+    <ScrollView className="pt-8 bg-gray-100 h-[120vh]">
       <View className="px-5 py-4 flex-row justify-between items-center">
         <View className="flex-row items-center space-x-4">
           {/* <TouchableOpacity onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
             <Feather name="menu" size={28} color="black" />
           </TouchableOpacity> */}
-          <View className="space-y-0">
-            <Text className="text-[22px] font-semibold">
-              Morning Ali Husain
-            </Text>
-            <Text className="text-gray-500 font-semibold text-[16px]">
-              5 June 2024
-            </Text>
-          </View>
+          <TouchableOpacity className="h-16 w-16 bg-white rounded-full p-1" onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
+            <Image
+              source={{ uri: 'https://img.freepik.com/free-photo/front-view-man-posing_23-2148364843.jpg?t=st=1717328137~exp=1717331737~hmac=6c62d659733e221d1e95715bd236563bea66bccef2e710377b3e11597780177b&w=360' }}
+              className="h-full w-full object-cover rounded-full"
+            />
+          </TouchableOpacity>
         </View>
-        <TouchableOpacity className="h-16 w-16 bg-white rounded-full p-1" onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
-          <Image
-            source={{ uri: 'https://img.freepik.com/free-photo/front-view-man-posing_23-2148364843.jpg?t=st=1717328137~exp=1717331737~hmac=6c62d659733e221d1e95715bd236563bea66bccef2e710377b3e11597780177b&w=360' }}
-            className="h-full w-full object-cover rounded-full"
-          />
-        </TouchableOpacity>
+        <View className="space-y-0">
+          <Text className="text-[22px] font-semibold">
+            Morning Ali Husain
+          </Text>
+          <Text className="text-gray-500 font-semibold text-[16px]">
+            5 June 2024
+          </Text>
+        </View>
       </View>
       {/* --------------------- */}
       <View className="px-5 pt-2 pb-6 space-y-3">
@@ -273,7 +273,7 @@ const StartingScreen = () => {
           </View>
         </View>
       </View>
-    </View>
+    </ScrollView>
   )
 }
 
