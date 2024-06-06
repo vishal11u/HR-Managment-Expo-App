@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { LineChart, PieChart, BarChart } from 'react-native-chart-kit';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import { LineChart, PieChart, BarChart, ContributionGraph } from 'react-native-chart-kit';
 
-const EmployeDataAnalyze = () => {
+const EmployeeDataAnalyze = () => {
     const [selectedChart, setSelectedChart] = useState('work');
 
     const chartsData = {
@@ -69,7 +69,7 @@ const EmployeDataAnalyze = () => {
                 datasets: [{ data: [80, 85, 75, 90], color: (opacity = 1) => `rgba(76, 175, 80, ${opacity})` }],
             },
             lineChartData: {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sup'],
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
                 datasets: [
                     {
                         data: [70, 80, 85, 90, 75, 95, 70, 60],
@@ -83,6 +83,60 @@ const EmployeDataAnalyze = () => {
             },
         },
     };
+
+    const commitsData = [
+        { date: "2017-01-02", count: 1 },
+        { date: "2017-01-03", count: 1 },
+        { date: "2017-01-04", count: 1 },
+        { date: "2017-01-05", count: 1 },
+        { date: "2017-01-06", count: 1 },
+        { date: "2017-01-30", count: 1 },
+        { date: "2017-01-31", count: 1 },
+        { date: "2017-02-01", count: 1 },
+        { date: "2017-02-02", count: 1 },
+        { date: "2017-02-03", count: 1 },
+        { date: "2017-02-04", count: 1 },
+        { date: "2017-03-01", count: 1 },
+        { date: "2017-03-02", count: 1 },
+        { date: "2017-03-03", count: 1 },
+        { date: "2017-03-04", count: 1 },
+        { date: "2017-04-01", count: 1 },
+        { date: "2017-04-02", count: 1 },
+        { date: "2017-04-03", count: 1 },
+        { date: "2017-04-04", count: 1 },
+        { date: "2017-05-01", count: 1 },
+        { date: "2017-05-02", count: 1 },
+        { date: "2017-05-03", count: 1 },
+        { date: "2017-05-04", count: 1 },
+        { date: "2017-06-01", count: 1 },
+        { date: "2017-06-02", count: 1 },
+        { date: "2017-06-03", count: 1 },
+        { date: "2017-06-04", count: 1 },
+        { date: "2017-07-01", count: 1 },
+        { date: "2017-07-02", count: 1 },
+        { date: "2017-07-03", count: 1 },
+        { date: "2017-07-04", count: 1 },
+        { date: "2017-08-01", count: 1 },
+        { date: "2017-08-02", count: 1 },
+        { date: "2017-08-03", count: 1 },
+        { date: "2017-08-04", count: 1 },
+        { date: "2017-09-01", count: 1 },
+        { date: "2017-09-02", count: 1 },
+        { date: "2017-09-03", count: 1 },
+        { date: "2017-09-04", count: 1 },
+        { date: "2017-10-01", count: 1 },
+        { date: "2017-10-02", count: 1 },
+        { date: "2017-10-03", count: 1 },
+        { date: "2017-10-04", count: 1 },
+        { date: "2017-11-01", count: 1 },
+        { date: "2017-11-02", count: 1 },
+        { date: "2017-11-03", count: 1 },
+        { date: "2017-11-04", count: 1 },
+        { date: "2017-12-01", count: 1 },
+        { date: "2017-12-02", count: 1 },
+        { date: "2017-12-03", count: 1 },
+        { date: "2017-12-04", count: 1 }
+    ];
 
     const renderChart = () => {
         const chartData = chartsData[selectedChart];
@@ -109,38 +163,78 @@ const EmployeDataAnalyze = () => {
                         borderRadius: 10,
                     }}
                 />
-                <BarChart
-                    data={chartData.barChartData}
-                    width={350}
-                    height={200}
-                    chartConfig={chartConfig}
-                    style={styles.chart}
-                    withOuterLines={true}
-                />
-                <LineChart
-                    data={chartData.lineChartData}
-                    width={350}
-                    height={200}
-                    chartConfig={chartConfig}
-                    style={styles.chart}
-                    bezier
-                    withDots={true}
-                    withInnerLines={false}
-                    withOuterLines={true}
-                    formatYLabel={value => `${value}%`}
-                    // withHorizontalLabels={true}
-                    fromZero
-                    withShadow={true}
-                    // withVerticalLabels={true}
-                    // withHorizontalLines={true}
-                />
+                {/* {selectedChart !== 'attendance' && (
+                    <> */}
+                        <BarChart
+                            data={chartData.barChartData}
+                            width={350}
+                            height={200}
+                            chartConfig={chartConfig}
+                            style={styles.chart}
+                            fromZero
+                            showBarTops={true}
+                            showValuesOnTopOfBars={true}
+                            withInnerLines={false}
+                        />
+                        <LineChart
+                            data={chartData.lineChartData}
+                            width={350}
+                            height={200}
+                            chartConfig={chartConfig}
+                            style={styles.chart}
+                            bezier
+                            withDots={true}
+                            withInnerLines={false}
+                            withOuterLines={true}
+                            formatYLabel={value => `${value}%`}
+                            fromZero
+                            withShadow={true}
+                            segments={5}
+                        />
+                    {/* </>
+                )} */}
+                {/* {selectedChart === 'attendance' && (
+                    <>
+                        <View style={styles.legendContainer}>
+                            <View style={styles.legendItem}>
+                                <View style={[styles.legendColor, { backgroundColor: '#161616' }]} />
+                                <Text style={styles.legendText}>Present</Text>
+                            </View>
+                            <View style={styles.legendItem}>
+                                <View style={[styles.legendColor, { backgroundColor: '#e3e3e3' }]} />
+                                <Text style={styles.legendText}>Absent</Text>
+                            </View>
+                        </View>
+                        <ScrollView horizontal>
+                            <ContributionGraph
+                                values={commitsData}
+                                endDate={new Date("2017-12-31")}
+                                numDays={365}
+                                width={1150}
+                                height={220}
+                                chartConfig={chartConfig}
+                                style={{
+                                    borderRadius: 10,
+                                    marginTop: 10
+                                }}
+                                showOutOfRangeDays={true}
+                                getMonthLabel={(index) => {
+                                    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+                                    return months[index];
+                                }}
+                                accessor="count"
+                            // colorForValue={(value) => value > 0 ? '#0000FF' : '#ADD8E6'}
+                            />
+                        </ScrollView>
+                    </>
+                )} */}
             </View>
         );
     };
 
     return (
-        <View style={styles.container} className="bg-blue-50">
-            <View style={styles.filterContainer}>
+        <View style={styles.container}>
+            <View style={styles.filterContainer} className={`${selectedChart === 'attendance' ? 'pt-0' : ''}`}>
                 {Object.keys(chartsData).map((key) => (
                     <FilterButton key={key} chartKey={key} selectedChart={selectedChart} onPress={() => setSelectedChart(key)} />
                 ))}
@@ -178,8 +272,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#bdbdbd',
         borderRadius: 8,
         marginRight: 10,
-        color: 'black',
-        fontWeight: 600
     },
     selectedFilterButton: {
         backgroundColor: '#3B82F6',
@@ -194,8 +286,6 @@ const styles = StyleSheet.create({
     chart: {
         marginTop: 15,
         borderRadius: 10,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
     },
     chartTitle: {
         fontSize: 20,
@@ -208,6 +298,26 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         color: '#666666',
     },
+    legendContainer: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        marginBottom: 5,
+        marginTop: 20
+    },
+    legendItem: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginRight: 10,
+    },
+    legendColor: {
+        width: 15,
+        height: 15,
+        borderRadius: 3,
+        marginRight: 5,
+    },
+    legendText: {
+        fontSize: 14,
+    },
 });
 
-export default EmployeDataAnalyze;
+export default EmployeeDataAnalyze;

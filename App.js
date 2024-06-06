@@ -6,9 +6,9 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import StartingScreen from './screens/StartingScreen';
-// import AutorityScreen from './screens/AutorityScreen';
-// import EmployeeLogin from './screens/loginscreens/EmployeeLogin';
-// import ManagerLogin from './screens/loginscreens/ManagerLogin';
+import AutorityScreen from './screens/AutorityScreen';
+import EmployeeLogin from './screens/loginscreens/EmployeeLogin';
+import ManagerLogin from './screens/loginscreens/ManagerLogin';
 import UserProfile from './screens/profile/UserProfile';
 import History from './screens/drawer_pages/History';
 import CustomDrawerContent from './screens/drawer_pages/CustomDrawerContent';
@@ -121,7 +121,6 @@ function DrawerNavigator() {
           ),
         }}
       />
-
     </Drawer.Navigator>
   );
 }
@@ -130,9 +129,9 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        {/* <Stack.Screen name="AutorityScreen" component={AutorityScreen} />
+        {/* <Stack.Screen name="AutorityScreen" component={AutorityScreen} /> */}
         <Stack.Screen name="EmployeeLogin" component={EmployeeLogin} />
-        <Stack.Screen name="ManagerLogin" component={ManagerLogin} /> */}
+        {/* <Stack.Screen name="ManagerLogin" component={ManagerLogin} /> */}
         <Stack.Screen name="DrawerNavigator" component={DrawerNavigator} />
         <Stack.Screen name="Notification" component={Notification} />
         <Stack.Screen name="Send_Timeoff_Form" component={Send_Timeoff_Form} />
