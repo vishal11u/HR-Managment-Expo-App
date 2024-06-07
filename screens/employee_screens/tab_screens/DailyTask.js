@@ -1,7 +1,7 @@
 import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import { EvilIcons } from '@expo/vector-icons';
-import { TaskData } from '../../components/DailyTaskObj';
+import { TaskData } from '../../../services/DailyTaskObj';
 
 const DailyTask = () => {
   const [filter, setFilter] = useState('All');

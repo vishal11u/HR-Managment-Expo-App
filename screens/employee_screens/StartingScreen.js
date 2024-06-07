@@ -4,8 +4,8 @@ import { useNavigation, DrawerActions } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
 import { EvilIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
-import { data, ShiftData, recentData, ShiftData2 } from '../components/StartingScreenObj';
-import { AllNotifications } from '../components/Notifications';
+import { data, ShiftData, recentData, ShiftData2 } from '../../services/StartingScreenObj';
+import { AllNotifications } from '../../services/Notifications';
 
 const StartingScreen = () => {
   const navigation = useNavigation();

@@ -1,26 +1,37 @@
 import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, SafeAreaView, StyleSheet, Image } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, SafeAreaView, StyleSheet, Image, Button } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigation } from '@react-navigation/native';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUser } from '../../auth/authSlice';
 
 const schema = yup.object().shape({
   employeeId: yup.string().required('Employee ID is required'),
-  email: yup.string().required('Email or Username is required'),
+  username: yup.string().required('Email or Username is required'),
   password: yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
 });
 
-const EmployeeLogin = () => {
+const EmployeeLogin = ({ setRole, navigation }) => {
   const { control, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
   });
 
   const navigate = useNavigation();
+  const dispatch = useDispatch();
+  const loading = useSelector(state => state.auth.loading);
+  const error = useSelector(state => state.auth.error);
 
   const onSubmit = data => {
     console.log(data);
-    navigate.navigate("DrawerNavigator")
+    let loginDetails = {
+      username: data.username,
+      password: data.password,
+    }
+    dispatch(loginUser(loginDetails));
+    setRole('employee');
+    // navigate.navigate("DrawerNavigator")
   };
 
   return (
@@ -62,7 +73,7 @@ const EmployeeLogin = () => {
           />
           <Controller
             control={control}
-            name="email"
+            name="username"
             render={({ field: { onChange, onBlur, value } }) => (
               <>
                 <TextInput
@@ -95,7 +106,9 @@ const EmployeeLogin = () => {
               </>
             )}
           />
-          <TouchableOpacity style={styles.button} onPress={handleSubmit(onSubmit)}>
+          {error ? <Text className="py-1.5 text-center text-red-500 text-[15px] font-medium">{error}</Text> : null}
+          {/* <Button title="Login" onPress={handleLogin} disabled={loading} /> */}
+          <TouchableOpacity style={styles.button} onPress={handleSubmit(onSubmit)} disabled={loading}>
             <Text style={styles.buttonText}>Login</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.goBackButton} onPress={() => navigate.goBack()}>

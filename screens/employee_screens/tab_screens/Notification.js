@@ -2,7 +2,7 @@ import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-nati
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
-import { AllNotifications } from '../../components/Notifications';
+import { AllNotifications } from '../../../services/Notifications';
 
 const Notification = () => {
   const navigation = useNavigation();

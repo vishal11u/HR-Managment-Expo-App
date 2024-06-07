@@ -2,9 +2,9 @@ import { View, Text, ScrollView, TouchableOpacity, Image, SafeAreaView } from 'r
 import React from 'react'
 import { useNavigation } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
-import { Wallet } from '../../assets/index';
+import { Wallet } from '../../../assets/index';
 import { EvilIcons } from '@expo/vector-icons';
-import { SalarySlip } from '../../components/SalaryObj';
+import { SalarySlip } from '../../../services/SalaryObj';
 
 const PaySlip = () => {
     const navigation = useNavigation();

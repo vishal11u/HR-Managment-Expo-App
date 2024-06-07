@@ -11,20 +11,21 @@ const schema = yup.object().shape({
   password: yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
 });
 
-const ManagerLogin = () => {
+const ManagerLogin = ({ setRole }) => {
   const { control, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
   });
 
   const navigate = useNavigation();
 
-  const onSubmit = data => {
-    if (data.email !== "abc123" || data.password !== "123456") {
-      Alert.alert("Invalid Username and Password")
-    } else {
-      console.log(data);
-      navigate.navigate("DrawerNavigator")
-    }
+  const onSubmit = (data) => {
+    // if (data.email !== "abc123" || data.password !== "123456") {
+    //   Alert.alert("Invalid Username and Password")
+    // } else {
+    //   console.log(data);
+    //   navigate.navigate("DrawerNavigator")
+    // }
+    setRole('manager');
   };
 
   const handleGoBack = () => {

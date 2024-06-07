@@ -10,11 +10,13 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.4.2",
+    "@react-native-async-storage/async-storage": "^1.23.1",
     "@react-native-community/datetimepicker": "^8.1.0",
     "@react-navigation/bottom-tabs": "^6.5.20",
     "@react-navigation/drawer": "^6.6.15",
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/native-stack": "^6.9.26",
+    "@reduxjs/toolkit": "^2.2.5",
     "axios": "^1.7.2",
     "expo": "~51.0.9",
     "expo-image-picker": "~15.0.5",
@@ -36,6 +38,7 @@
     "react-native-screens": "^3.31.1",
     "react-native-svg": "^15.2.0",
     "react-native-vector-icons": "^10.1.0",
+    "react-redux": "^9.1.2",
     "yup": "^1.4.0"
   },
   "devDependencies": {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { Feather } from '@expo/vector-icons';
-import { TimeOffData } from '../../components/TimeOffObj';
+import { TimeOffData } from '../../../services/TimeOffObj';
 import { useNavigation } from '@react-navigation/native';
 
 const TimeOff = () => {

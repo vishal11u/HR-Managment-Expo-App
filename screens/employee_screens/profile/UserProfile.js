@@ -1,12 +1,23 @@
 import { View, Text, ScrollView, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { AntDesign } from '@expo/vector-icons';
-import { PaySlip, Reimbursment, Profile } from '../../assets';
+import { PaySlip, Reimbursment, Profile } from '../../../assets/index';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from '../../../auth/authSlice';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const UserProfile = () => {
   const navigation = useNavigation();
+  const user = useSelector(state => state.auth.user);
+  const dispatch = useDispatch();
+
+  const handleLogout = async () => {
+    await AsyncStorage.removeItem('isAuthenticated');
+    await AsyncStorage.removeItem('user');
+    dispatch(logout());
+  };
 
   return (
     <ScrollView className="pt-10 bg-blue-50 h-full">
@@ -115,7 +126,7 @@ const UserProfile = () => {
         </TouchableOpacity> */}
       </View>
       {/* --------------------------------------------------- */}
-      <TouchableOpacity className="mx-4 mt-20 border p-3.5 rounded-lg border-blue-400 bg-blue-100 ">
+      <TouchableOpacity className="mx-4 mt-20 border p-3.5 rounded-lg border-blue-400 bg-blue-100" onPress={handleLogout}>
         <Text className="text-center text-blue-500 font-medium">
           Logout
         </Text>
