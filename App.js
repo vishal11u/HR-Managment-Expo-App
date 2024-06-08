@@ -136,7 +136,7 @@ function DrawerNavigator() {
 function ManagerDrawer() {
     return (
         <Drawer.Navigator
-            initialRouteName="Home"
+            initialRouteName="ManagerHome"
             drawerContent={(props) => <CustomDrawerContent {...props} />}
             screenOptions={{
                 headerShown: false,
@@ -151,11 +151,20 @@ function ManagerDrawer() {
             }}
         >
             <Drawer.Screen
+                name="Manager Home"
+                component={ManagerHomeScreen}
+                options={{
+                    drawerIcon: ({ focused, color, size }) => (
+                        <Ionicons name="home" size={size} color={color} />
+                    ),
+                }}
+            />
+            <Drawer.Screen
                 name="Employee List"
                 component={EmployeeList}
                 options={{
                     drawerIcon: ({ focused, color, size }) => (
-                        <Ionicons name="grid" size={size} color={color} />
+                        <Ionicons name="people" size={size} color={color} />
                     ),
                 }}
             />
@@ -179,8 +188,7 @@ function EmployeeStackNavigator() {
 function ManagerStackNavigator() {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="ManagerHome" component={ManagerHomeScreen} />
-            {/* <Stack.Screen name="DrawerNavigator" component={DrawerNavigator} /> */}
+            <Stack.Screen name="ManagerDrawer" component={ManagerDrawer} />
         </Stack.Navigator>
     );
 }
@@ -200,10 +208,20 @@ function AppNavigator() {
         }
     }, [isAuthenticated, role]);
 
+    React.useEffect(() => {
+        // Example function to load role from AsyncStorage
+        const loadRole = async () => {
+            const savedRole = await AsyncStorage.getItem('role');
+            if (savedRole) setRole(savedRole);
+        };
+
+        if (isHydrated) loadRole();
+    }, [isHydrated]);
+
     if (!isHydrated) {
         return (
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <Text className="text-[16px] font-medium">Loading...</Text>
+                <Text style={{ fontSize: 16, fontWeight: 'bold' }}>Loading...</Text>
             </View>
         );
     }
@@ -221,16 +239,14 @@ function AppNavigator() {
                         </Stack.Screen>
                     </>
                 ) : (
-                    <>
-                        {/* {role === roles.employee && (
-                            <Stack.Screen name="EmployeeStackNavigator" component={EmployeeStackNavigator} />
-                        )} */}
-                        {/* {role === roles.manager ? ( */}
-                        <Stack.Screen name="ManagerStackNavigator" component={ManagerStackNavigator} />
-                        {/* ) : (
-                            <Stack.Screen name="EmployeeStackNavigator" component={EmployeeStackNavigator} />
-                        )} */}
-                    </>
+                    // <>
+                    //     {role === roles.employee && (
+                    //         <Stack.Screen name="EmployeeStackNavigator" component={EmployeeStackNavigator} />
+                    //     )}
+                    //     {role === roles.manager && (
+                    <Stack.Screen name="ManagerStackNavigator" component={ManagerStackNavigator} />
+                    //     )}
+                    // </>
                 )}
             </Stack.Navigator>
         </NavigationContainer>
