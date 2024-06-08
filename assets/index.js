@@ -14,3 +14,4 @@ export { default as Leave } from "./leave.png";
 export { default as HalfDay } from "./halfday.png";
 export { default as Wallet } from "./wallet.png";
 export { default as Profile } from "./profile.png";
+export { default as IntroVideo } from './self-employed.mp4'

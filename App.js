@@ -23,6 +23,7 @@ import ManagerHomeScreen from './screens/hr_screens/ManagerHomeScreen';
 import store from './auth/store';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Provider, useSelector, useDispatch } from 'react-redux';
+import EmployeeList from './screens/hr_screens/drawescreens/EmployeeList';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -132,6 +133,36 @@ function DrawerNavigator() {
     );
 }
 
+function ManagerDrawer() {
+    return (
+        <Drawer.Navigator
+            initialRouteName="Home"
+            drawerContent={(props) => <CustomDrawerContent {...props} />}
+            screenOptions={{
+                headerShown: false,
+                drawerActiveTintColor: '#00a2e4',
+                drawerInactiveTintColor: 'black',
+                drawerLabelStyle: {
+                    marginLeft: -18,
+                },
+                drawerItemStyle: {
+                    marginVertical: 0,
+                },
+            }}
+        >
+            <Drawer.Screen
+                name="Employee List"
+                component={EmployeeList}
+                options={{
+                    drawerIcon: ({ focused, color, size }) => (
+                        <Ionicons name="grid" size={size} color={color} />
+                    ),
+                }}
+            />
+        </Drawer.Navigator>
+    );
+}
+
 function EmployeeStackNavigator() {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
@@ -149,6 +180,7 @@ function ManagerStackNavigator() {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen name="ManagerHome" component={ManagerHomeScreen} />
+            {/* <Stack.Screen name="DrawerNavigator" component={DrawerNavigator} /> */}
         </Stack.Navigator>
     );
 }
@@ -171,7 +203,7 @@ function AppNavigator() {
     if (!isHydrated) {
         return (
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <Text>Loading...</Text>
+                <Text className="text-[16px] font-medium">Loading...</Text>
             </View>
         );
     }
@@ -189,14 +221,16 @@ function AppNavigator() {
                         </Stack.Screen>
                     </>
                 ) : (
-                    // <>
-                    //     {role === roles.employee && (
-                    <Stack.Screen name="EmployeeStackNavigator" component={EmployeeStackNavigator} />
-                    // )}
-                    //     {role === roles.manager && (
-                    //         <Stack.Screen name="ManagerStackNavigator" component={ManagerStackNavigator} />
-                    //     )}
-                    // </>
+                    <>
+                        {/* {role === roles.employee && (
+                            <Stack.Screen name="EmployeeStackNavigator" component={EmployeeStackNavigator} />
+                        )} */}
+                        {/* {role === roles.manager ? ( */}
+                        <Stack.Screen name="ManagerStackNavigator" component={ManagerStackNavigator} />
+                        {/* ) : (
+                            <Stack.Screen name="EmployeeStackNavigator" component={EmployeeStackNavigator} />
+                        )} */}
+                    </>
                 )}
             </Stack.Navigator>
         </NavigationContainer>

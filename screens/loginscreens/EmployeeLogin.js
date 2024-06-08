@@ -9,7 +9,7 @@ import { loginUser } from '../../auth/authSlice';
 
 const schema = yup.object().shape({
   employeeId: yup.string().required('Employee ID is required'),
-  username: yup.string().required('Email or Username is required'),
+  username: yup.string().required('Username is required'),
   password: yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
 });
 
@@ -77,15 +77,15 @@ const EmployeeLogin = ({ setRole, navigation }) => {
             render={({ field: { onChange, onBlur, value } }) => (
               <>
                 <TextInput
-                  style={[styles.input, errors.email && { borderColor: 'red' }]}
-                  placeholder="Email or Username"
+                  style={[styles.input, errors.username && { borderColor: 'red' }]}
+                  placeholder="Username"
                   keyboardType="email-address"
                   autoCapitalize="none"
                   onBlur={onBlur}
                   onChangeText={onChange}
                   value={value}
                 />
-                {errors.email && <Text style={styles.errorText}>{errors.email.message}</Text>}
+                {errors.username && <Text style={styles.errorText}>{errors.username.message}</Text>}
               </>
             )}
           />
