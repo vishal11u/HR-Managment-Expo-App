@@ -24,6 +24,7 @@ import store from './auth/store';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Provider, useSelector, useDispatch } from 'react-redux';
 import EmployeeList from './screens/hr_screens/drawescreens/EmployeeList';
+import Leave_Applications from './screens/hr_screens/approvals_screens/Leave_Applications';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -189,6 +190,7 @@ function ManagerStackNavigator() {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen name="ManagerDrawer" component={ManagerDrawer} />
+            <Stack.Screen name="LeaveApplications" component={Leave_Applications} />
         </Stack.Navigator>
     );
 }
