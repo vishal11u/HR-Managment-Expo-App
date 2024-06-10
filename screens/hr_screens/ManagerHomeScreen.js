@@ -29,7 +29,7 @@ const ManagerHomeScreen = () => {
   };
 
   const renderFlatListItem = ({ item }) => (
-    <TouchableOpacity style={[styles.itemContainer]}>
+    <TouchableOpacity style={[styles.itemContainer]} onPress={() => navigation.navigate(`${item.link}`)}>
       <View style={[styles.iconContainer, getColorById(item.id)]}>
         {item.icon}
       </View>
@@ -47,7 +47,7 @@ const ManagerHomeScreen = () => {
           <TouchableOpacity onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
             <MaterialCommunityIcons name="menu" size={36} color="white" />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate("NotificationHR")}>
             <Ionicons name="notifications-circle-outline" size={38} color="white" style={styles.relative} />
             <Text style={styles.notificationBadge}>3</Text>
           </TouchableOpacity>

@@ -30,7 +30,7 @@ const ManagerLogin = ({ setRole }) => {
 
   const handleGoBack = () => {
     navigate.goBack();
-    console.log('Go back pressed');
+    // console.log('Go back pressed');
   };
 
   return (
@@ -59,7 +59,7 @@ const ManagerLogin = ({ setRole }) => {
               <>
                 <TextInput
                   style={[styles.input, errors.email && { borderColor: 'red' }]}
-                  placeholder="Email or Username"
+                  placeholder="Username"
                   keyboardType="email-address"
                   autoCapitalize="none"
                   onBlur={onBlur}

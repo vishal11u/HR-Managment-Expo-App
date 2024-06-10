@@ -5,6 +5,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { employees } from '../../../services/hrservices/EmployeeListObj';
 import { AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import { Feather } from '@expo/vector-icons';
 
 const EmployeeList = () => {
     const navigation = useNavigation();
@@ -75,12 +76,15 @@ const EmployeeList = () => {
     );
 
     return (
-        <MenuProvider style={styles.container} className="bg-blue-50">
-            <View className="flex-row items-center px-3 pb-3 pt-2">
-                <TouchableOpacity className="p-1 bg-blue-400 w-7 rounded-md" onPress={() => navigation.goBack()}>
-                    <AntDesign name="left" size={18} color="white" />
+        <MenuProvider style={styles.container} className="bg-gray-700">
+            <View className="flex-row items-center justify-between px-3 pb-3 pt-2">
+                <TouchableOpacity className="p-1 bg-white w-7 rounded-md" onPress={() => navigation.goBack()}>
+                    <AntDesign name="left" size={18} color="black" />
                 </TouchableOpacity>
-                <Text className="text-center w-[85%] font-semibold text-[18px]">Employees List</Text>
+                <Text className="text-center text-white font-semibold text-[18px]">Employees List</Text>
+                <TouchableOpacity className="bg-white rounded-full p-0.5" onPress={() => navigation.navigate("AddNewEmployee")}>
+                    <Feather name="plus-circle" size={24} color="black" />
+                </TouchableOpacity>
             </View>
             <FlatList
                 data={data}

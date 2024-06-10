@@ -22,9 +22,12 @@ import EmployeDataAnalyze from './screens/employee_screens/analytics/EmployeData
 import ManagerHomeScreen from './screens/hr_screens/ManagerHomeScreen';
 import store from './auth/store';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Provider, useSelector, useDispatch } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
 import EmployeeList from './screens/hr_screens/drawescreens/EmployeeList';
-import Leave_Applications from './screens/hr_screens/approvals_screens/Leave_Applications';
+import Leave_Applications from './screens/hr_screens/overviewscreens/Leave_Applications';
+import AddNewEmployee from './screens/hr_screens/add_new_employee/NewEmployee';
+import NotificationHR from './screens/hr_screens/overviewscreens/NotificationHR';
+import ProjectTasks from './screens/hr_screens/overviewscreens/ProjectTasks';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -50,7 +53,6 @@ function TabNavigator({ navigation }) {
             screenOptions={({ route }) => ({
                 tabBarIcon: ({ focused, color, size }) => {
                     let iconName;
-
                     if (route.name === 'Home') {
                         iconName = focused ? 'home' : 'home-outline';
                     } else if (route.name === 'Profile') {
@@ -191,6 +193,9 @@ function ManagerStackNavigator() {
         <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen name="ManagerDrawer" component={ManagerDrawer} />
             <Stack.Screen name="LeaveApplications" component={Leave_Applications} />
+            <Stack.Screen name="AddNewEmployee" component={AddNewEmployee} />
+            <Stack.Screen name="NotificationHR" component={NotificationHR} />
+            <Stack.Screen name="ProjectTasks" component={ProjectTasks} />
         </Stack.Navigator>
     );
 }
@@ -198,7 +203,7 @@ function ManagerStackNavigator() {
 function AppNavigator() {
     const [role, setRole] = React.useState(roles.none);
     const { isAuthenticated, loading, isHydrated } = useSelector(state => state.auth);
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
     React.useEffect(() => {
         if (isAuthenticated) {
@@ -211,7 +216,6 @@ function AppNavigator() {
     }, [isAuthenticated, role]);
 
     React.useEffect(() => {
-        // Example function to load role from AsyncStorage
         const loadRole = async () => {
             const savedRole = await AsyncStorage.getItem('role');
             if (savedRole) setRole(savedRole);
@@ -223,7 +227,7 @@ function AppNavigator() {
     if (!isHydrated) {
         return (
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <Text style={{ fontSize: 16, fontWeight: 'bold' }}>Loading...</Text>
+                <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Loading...</Text>
             </View>
         );
     }
