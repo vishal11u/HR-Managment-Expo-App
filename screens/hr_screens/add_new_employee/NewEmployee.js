@@ -3,17 +3,18 @@ import { View, Text, TextInput, Button, StyleSheet, Switch, ScrollView, Alert, T
 import { useNavigation } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
+import axios from 'axios';
 
 const AddNewEmployee = () => {
     const navigation = useNavigation();
-    const [employeeId, setEmployeeId] = useState(0);
+    const [employeeId, setEmployeeId] = useState('');
     const [employeeName, setEmployeeName] = useState('');
     const [designation, setDesignation] = useState('');
     const [salary, setSalary] = useState('');
     const [joinDate, setJoinDate] = useState('');
     const [birthDay, setBirthDay] = useState('');
     const [activeEmployee, setActiveEmployee] = useState(true);
-    const [number, setNumber] = useState(0);
+    const [number, setNumber] = useState('');
     const [address, setAddress] = useState('');
     const [loading, setLoading] = useState(false);
 
@@ -35,13 +36,7 @@ const AddNewEmployee = () => {
                 number,
                 address,
             };
-            const response = await fetch('http://192.168.0.62:8080/saveEmployee', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(AddNewEmployee),
-            });
+            const response = await axios.post('http://192.168.0.57:8080/saveEmployee', AddNewEmployee);
 
             console.log(response);
             clearFormFields();
@@ -55,31 +50,31 @@ const AddNewEmployee = () => {
     };
 
     const clearFormFields = () => {
-        setEmployeeId(0);
+        setEmployeeId('');
         setEmployeeName('');
         setDesignation('');
         setSalary('');
         setJoinDate('');
         setBirthDay('');
         setActiveEmployee(true);
-        setNumber(0);
+        setNumber('');
         setAddress('');
     };
 
     return (
-        <ScrollView className=" overflow-y-auto h-[100vh]">
+        <ScrollView className="overflow-y-auto h-[100vh]">
             <View style={styles.header} className="bg-gray-700 px-5">
                 <Ionicons onPress={() => navigation.goBack()} name="arrow-back-circle-outline" size={34} color="white" />
                 <Text style={styles.headerText} className="text-white">
                     <AntDesign name="adduser" size={24} color="white" /> Add New Employee
                 </Text>
             </View>
-            <ScrollView className="px-5">
+            <ScrollView className="px-5 bg-white h-[93vh] -mt-2">
                 <Text style={styles.label}>Employee ID :</Text>
                 <TextInput
                     style={styles.input}
-                    value={employeeId.toString()}
-                    onChangeText={(text) => setEmployeeId(parseInt(text))}
+                    value={employeeId}
+                    onChangeText={setEmployeeId}
                     keyboardType="numeric"
                 />
                 <Text style={styles.label}>Employee Name :</Text>
@@ -116,8 +111,8 @@ const AddNewEmployee = () => {
                 <Text style={styles.label}>Phone Number :</Text>
                 <TextInput
                     style={styles.input}
-                    value={number.toString()}
-                    onChangeText={(text) => setNumber(parseInt(text))}
+                    value={number}
+                    onChangeText={setNumber}
                     keyboardType="phone-pad"
                 />
                 <Text style={styles.label}>Address :</Text>
@@ -137,11 +132,11 @@ const AddNewEmployee = () => {
                     />
                 </View>
                 {loading ? (
-                    <View className=" bg-gray-700 rounded-lg p-1 mt-3">
+                    <View className="bg-gray-700 rounded-lg p-1 mt-3">
                         <ActivityIndicator size="large" color="#fff" />
                     </View>
                 ) : (
-                    <TouchableOpacity className="p-3 mt-3 rounded-lg bg-gray-700" onPress={handleSubmit}>
+                    <TouchableOpacity className="p-4 mt-3 rounded-lg bg-gray-700" onPress={handleSubmit}>
                         <Text className="text-center text-white text-[16px] font-medium">Submit</Text>
                     </TouchableOpacity>
                 )}
@@ -155,14 +150,13 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginBottom: 5,
-        // marginTop: 25,
         paddingTop: 35,
         paddingBottom: 10
     },
     headerText: {
         fontSize: 20,
         fontWeight: 'bold',
-        marginLeft: 30,
+        marginLeft: 45,
     },
     label: {
         marginTop: 8,

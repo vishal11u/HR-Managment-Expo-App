@@ -27,10 +27,9 @@ const ProjectTasks = () => {
     const [tasks, setTasks] = useState(initialTasks);
     const [selectedDate, setSelectedDate] = useState('');
 
-    const handleDateSelection = (day, index) => {
+    const handleDateSelection = (day) => {
         setSelectedDate(day);
-        const selectedDayDate = weekDates[index];
-        const filteredTasks = initialTasks.filter(task => new Date(task.date).getDate() === selectedDayDate);
+        const filteredTasks = day ? initialTasks.filter(task => task.date === day) : initialTasks;
         setTasks(filteredTasks);
     };
 
@@ -79,7 +78,7 @@ const ProjectTasks = () => {
             </View>
             <View style={styles.dateSection}>
                 <Text style={styles.monthDateText}>{getFormattedDate()}</Text>
-                <Text style={styles.todayDateText}>Today: {weekDates[new Date().getDay()]}</Text>
+                {/* <Text style={styles.todayDateText}>Today: {weekDates[new Date().getDay()]}</Text> */}
             </View>
             <View style={styles.weekRow}>
                 {days.map((day, index) => (
@@ -95,7 +94,7 @@ const ProjectTasks = () => {
             </View>
             <ScrollView style={styles.cardsContainer}>
                 {tasks.map((task) => (
-                    <View key={task.id} style={styles.card} className="transition-all active:scale-[1.1]">
+                    <View key={task.id} style={styles.card} className="border-l-[3px] bordr-[0.2px] border-white">
                         <View className="flex-row items-center pb-2 border-b border-gray-400">
                             <View style={[styles.statusIndicator, { backgroundColor: getStatusColor(task.status) }]} />
                             <Text style={[styles.status, getStatusStyle(task.status)]}>{task.status}</Text>
