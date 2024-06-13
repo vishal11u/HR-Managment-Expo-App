@@ -28,6 +28,7 @@ import Leave_Applications from './screens/hr_screens/overviewscreens/Leave_Appli
 import AddNewEmployee from './screens/hr_screens/add_new_employee/NewEmployee';
 import NotificationHR from './screens/hr_screens/overviewscreens/NotificationHR';
 import ProjectTasks from './screens/hr_screens/overviewscreens/ProjectTasks';
+import TaskCreation from './screens/hr_screens/overviewscreens/TaskCreation';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -196,6 +197,7 @@ function ManagerStackNavigator() {
             <Stack.Screen name="AddNewEmployee" component={AddNewEmployee} />
             <Stack.Screen name="NotificationHR" component={NotificationHR} />
             <Stack.Screen name="ProjectTasks" component={ProjectTasks} />
+            <Stack.Screen name="TaskCreation" component={TaskCreation} />
         </Stack.Navigator>
     );
 }
