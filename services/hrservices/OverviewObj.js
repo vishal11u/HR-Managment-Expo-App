@@ -45,6 +45,6 @@ export const OverviewAllSections = [
         title: 'Team',
         icon: <MaterialIcons name="groups" size={34} color="white" />,
         count: 11,
-        link: "LeaveApplications"
+        link: "Teams"
     },
 ]
