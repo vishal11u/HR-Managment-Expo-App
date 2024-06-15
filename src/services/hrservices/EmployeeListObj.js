@@ -1,0 +1,72 @@
+export const employees = [
+    {
+        id: '1',
+        name: 'Jane Doe',
+        designation: 'Software Developer',
+        position: 'Senior',
+        imageUrl: 'https://thumbs.dreamstime.com/b/businessman-profile-cartoon-glasses-round-icon-vector-illustration-graphic-design-135443413.jpg',
+    },
+    {
+        id: '2',
+        name: 'John Smith',
+        designation: 'Product Manager',
+        position: 'Lead',
+        imageUrl: 'https://thumbs.dreamstime.com/b/businessman-profile-cartoon-beard-round-icon-vector-illustration-graphic-design-135443411.jpg',
+    },
+    {
+        id: '3',
+        name: 'Alice Johnson',
+        designation: 'UI/UX Designer',
+        position: 'Mid-level',
+        imageUrl: 'https://thumbs.dreamstime.com/b/businessman-avatar-cartoon-character-profile-picture-wearing-suit-smiling-portrait-round-icon-vector-illustration-graphic-149146899.jpg',
+    },
+    {
+        id: '4',
+        name: 'Bob Brown',
+        designation: 'Data Scientist',
+        position: 'Senior',
+        imageUrl: 'https://cdn2.iconfinder.com/data/icons/business-man-8/512/7-1024.png',
+    },
+    {
+        id: '5',
+        name: 'Carol White',
+        designation: 'DevOps Engineer',
+        position: 'Lead',
+        imageUrl: 'https://thumbs.dreamstime.com/b/businessman-profile-cartoon-glasses-round-icon-vector-illustration-graphic-design-135443413.jpg',
+    },
+    {
+        id: '6',
+        name: 'Eve Black',
+        designation: 'Quality Assurance',
+        position: 'Junior',
+        imageUrl: 'https://thumbs.dreamstime.com/b/businessman-profile-cartoon-glasses-round-icon-vector-illustration-graphic-design-135443413.jpg',
+    },
+    {
+        id: '7',
+        name: 'Frank Clark',
+        designation: 'Systems Analyst',
+        position: 'Senior',
+        imageUrl: 'https://thumbs.dreamstime.com/b/businessman-profile-cartoon-glasses-round-icon-vector-illustration-graphic-design-135443413.jpg',
+    },
+    {
+        id: '8',
+        name: 'Grace Hopper',
+        designation: 'Project Manager',
+        position: 'Lead',
+        imageUrl: 'https://thumbs.dreamstime.com/b/businessman-profile-cartoon-glasses-round-icon-vector-illustration-graphic-design-135443413.jpg',
+    },
+    {
+        id: '9',
+        name: 'Harry Potter',
+        designation: 'Marketing Manager',
+        position: 'Mid-level',
+        imageUrl: 'https://thumbs.dreamstime.com/b/businessman-profile-cartoon-glasses-round-icon-vector-illustration-graphic-design-135443413.jpg',
+    },
+    {
+        id: '10',
+        name: 'Irene Adler',
+        designation: 'Human Resources',
+        position: 'Senior',
+        imageUrl: 'https://thumbs.dreamstime.com/b/businessman-profile-cartoon-glasses-round-icon-vector-illustration-graphic-design-135443413.jpg',
+    }
+];

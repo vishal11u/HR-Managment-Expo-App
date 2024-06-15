@@ -11,8 +11,8 @@ const TaskCreation = () => {
     const [reason, setReason] = useState('');
     const [isFullDay, setIsFullDay] = useState('');
     const [startDate, setStartDate] = useState('');
-    const [endDate, setEndDate] = useState('');
-    const [halfDayTime, setHalfDayTime] = useState('');
+    const [fromTime, setFromTime] = useState('');
+    const [toTime, setToTime] = useState('');
     const [selectedField, setSelectedField] = useState('');
     const [showDateTimePicker, setShowDateTimePicker] = useState(false);
     const [mode, setMode] = useState('date');
@@ -23,8 +23,8 @@ const TaskCreation = () => {
             reason,
             isFullDay,
             startDate,
-            endDate,
-            halfDayTime
+            fromTime,
+            toTime
         };
 
         console.log(requestData);
@@ -32,8 +32,8 @@ const TaskCreation = () => {
         setReason("");
         setIsFullDay("");
         setStartDate("");
-        setEndDate("");
-        setHalfDayTime("");
+        setFromTime("");
+        setToTime("");
 
         navigation.goBack();
     };
@@ -49,10 +49,10 @@ const TaskCreation = () => {
         if (selectedDate) {
             if (selectedField === 'startDate') {
                 setStartDate(selectedDate.toISOString().split('T')[0]);
-            } else if (selectedField === 'endDate') {
-                setEndDate(selectedDate.toISOString().split('T')[0]);
-            } else if (selectedField === 'halfDayTime') {
-                setHalfDayTime(selectedDate.toISOString());
+            } else if (selectedField === 'fromTime') {
+                setFromTime(selectedDate.toISOString());
+            } else if (selectedField === 'toTime') {
+                setToTime(selectedDate.toISOString());
             }
         }
     };
@@ -94,14 +94,14 @@ const TaskCreation = () => {
                 </View>
                 <View style={styles.formGroup}>
                     <Text style={styles.label}>From Time</Text>
-                    <TouchableOpacity onPress={() => openDateTimePicker('halfDayTime', 'time')} style={styles.dateTimeButton}>
-                        <Text>{halfDayTime ? new Date(halfDayTime).toLocaleTimeString() : 'Select Time'}</Text>
+                    <TouchableOpacity onPress={() => openDateTimePicker('fromTime', 'time')} style={styles.dateTimeButton}>
+                        <Text>{fromTime ? new Date(fromTime).toLocaleTimeString() : 'Select Time'}</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.formGroup}>
                     <Text style={styles.label}>To Time</Text>
-                    <TouchableOpacity onPress={() => openDateTimePicker('halfDayTime', 'time')} style={styles.dateTimeButton}>
-                        <Text>{halfDayTime ? new Date(halfDayTime).toLocaleTimeString() : 'Select Time'}</Text>
+                    <TouchableOpacity onPress={() => openDateTimePicker('toTime', 'time')} style={styles.dateTimeButton}>
+                        <Text>{toTime ? new Date(toTime).toLocaleTimeString() : 'Select Time'}</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.formGroup}>
