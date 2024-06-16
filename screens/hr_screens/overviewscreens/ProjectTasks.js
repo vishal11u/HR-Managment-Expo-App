@@ -68,7 +68,7 @@ const ProjectTasks = () => {
     };
 
     return (
-        <View style={styles.container}>
+        <View style={styles.container} className="bg-gray-700">
             <View style={styles.header} className="px-3">
                 <TouchableOpacity className="bg-white rounded-md p-1" onPress={() => navigation.goBack()}>
                     <AntDesign name="left" size={18} color="black" />
@@ -126,7 +126,7 @@ const ProjectTasks = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#1E1E1E',
+        // backgroundColor: '#1E1E1E',
         padding: 10,
     },
     header: {

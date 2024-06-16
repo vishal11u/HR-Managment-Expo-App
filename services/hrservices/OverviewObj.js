@@ -31,7 +31,7 @@ export const OverviewAllSections = [
         title: 'PaySlip',
         icon: <Ionicons name="receipt-outline" size={31} color="white" />,
         count: 16,
-        link: "LeaveApplications"
+        link: "PaySlipofEmployee"
     },
     {
         id: 5,
