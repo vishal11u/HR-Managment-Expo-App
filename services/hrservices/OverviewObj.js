@@ -24,7 +24,7 @@ export const OverviewAllSections = [
         title: 'Attendance',
         icon: <AntDesign name="calendar" size={31} color="white" />,
         count: 32,
-        link: "Employee List"
+        link: "Attendance"
     },
     {
         id: 4,

@@ -32,6 +32,7 @@ import TaskCreation from './screens/hr_screens/overviewscreens/TaskCreation';
 import Teams from './screens/hr_screens/overviewscreens/Teams';
 import PaySlipofEmployee from './screens/hr_screens/overviewscreens/PaySlip';
 import PaySlipSummary from './screens/hr_screens/employeePayslip/PaySlipSummary';
+import Attendance from './screens/hr_screens/overviewscreens/Attendance';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -204,6 +205,7 @@ function ManagerStackNavigator() {
             <Stack.Screen name="Teams" component={Teams} />
             <Stack.Screen name="PaySlipofEmployee" component={PaySlipofEmployee} />
             <Stack.Screen name="PaySlipSummary" component={PaySlipSummary} />
+            <Stack.Screen name="Attendance" component={Attendance} />
         </Stack.Navigator>
     );
 }
